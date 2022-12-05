@@ -40,8 +40,8 @@ albumRoute.put('/:albumId', async (req, res) => {
     try {
         const {albumId} = req.params;
         const updatedAlbum = await AlbumModel.findByIdAndUpdate(
+            ...req.body,
             albumId,
-            req.body,
             {new: true, runValidators: true}
         );
         return res.status(200).json(updatedAlbum);
